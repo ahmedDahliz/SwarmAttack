@@ -13,6 +13,7 @@ abstract class Bee {
     public abstract function getDamage();
 
     public function attacked($damage) {
+        //apply the received damage the the health point
         $this->healthPoint -= $damage;
         if($this->healthPoint <= 0){
             $this->healthPoint = 0;

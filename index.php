@@ -2,12 +2,13 @@
 ini_set('display_errors', 1);
 include 'Beehives.php';
 
+
+//The funtion of simulation
 function startWar(){
     $cerana = new Beehives('Cerana');
     $florea = new Beehives('Florea');
-    $ceranaAttackData = false;
-    $floreaAttackData = false;
     $attackNumber = 1;
+    //To show inital state of each colony
     echo '<div style="background:darkorange"> <h1>About each colony (Initial state)</h1><h3>Cerana colony</h3>';
     echo '<h4>Queen Cerena Health Point: '.$cerana->queen->getHealthPoint().'</h4>';
     echo '<h5>Number of worker: '.sizeof($cerana->workers).'</h5> ';
@@ -18,6 +19,7 @@ function startWar(){
     echo '<h5>Number of worker: '.sizeof($florea->workers).'</h5> ';
     echo '<h5>Number of warrior: '.sizeof($florea->warriors).'</h5> ';
     echo '</div>';
+    //start attacks
     while(true) {
             $floreaAttackData = $cerana->attack($florea);
             $ceranaAttackData = $florea->attack($cerana);
@@ -31,11 +33,13 @@ function startWar(){
             echo '<h5>Number of worker: '.sizeof($florea->workers).'</h5> ';
             echo '<h5>Number of warrior: '.sizeof($florea->warriors).'</h5> ';
             echo '</div>';
+            //if the queen of ceana colony is dead
             if($ceranaAttackData['isdead']){
                 echo '<div id="winner"> <h1>The final winner is '.$florea->getName().'</h1>';
                 echo '<span id="time"></span></div>';
                 break;
             }
+             //if the queen of ceana colony is dead
             if ($floreaAttackData['isdead']){
                 echo '<div id="winner"> <h1>The final winner is '.$cerana->getName().'</h1>';
                 echo '<span id="time"></span></div>';

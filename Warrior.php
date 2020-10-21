@@ -9,6 +9,7 @@ class Warrior extends Bee {
     }
     
     public function getDamage(){
+        //return a damage between 4 and 7 randomly
         return mt_rand(4, 7);
     }
 }

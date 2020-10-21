@@ -9,6 +9,7 @@ class Worker extends Bee {
     }
 
     public function getDamage(){
+        //return a damage between 2 and 4 randomly
         return mt_rand(2, 4);
     }
 }
